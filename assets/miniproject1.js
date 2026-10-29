@@ -96,11 +96,11 @@
 
 // let cart = []
 
-// let total = (cart) => {
-//     return  cart.reduce((sum, elem) =>{ 
-//         return sum + (elem.price * elem.quantity) 
-//     },0)
-// }
+let total = (cart) => {
+    return  cart.reduce((sum, elem) =>{ 
+        return sum + (elem.price * elem.quantity) 
+    },0)
+}
 
 // // console.log(total(cart)) 
 // console.log(total(cart)) 
@@ -123,24 +123,37 @@ let cart = [{ name: "Ring", price: 250, quantity: 1 },
 { name: "anklet", price: 500, quantity: 2 }
 ]
 
-let getReceipt = (cart) => {
-    let initialeceipt = cart.map((elem) => {
-        return `${elem.name} X ${elem.quantity} =  ${elem.quantity * elem.price}`
-    })
-    let total = cart.reduce((sum, elem) => { return sum + elem.quantity * elem.price }, 0)
+//my complicated version
 
-    initialeceipt.push("---------------------------")
-    initialeceipt.push(total)
+// let getReceipt = (cart) => {
+//     let initialeceipt = cart.map((elem) => {
+//         return `${elem.name} X ${elem.quantity} =  ${elem.quantity * elem.price}`
+//     })
+//     let total = cart.reduce((sum, elem) => { return sum + elem.quantity * elem.price }, 0)
 
-    // return initialeceipt
-    initialeceipt.forEach((element, index) => {
-        if (index === (initialeceipt.length - 1)) {
-            console.log(`Total: ${element}`)
-        } else {
-            console.log(element)
-        }
-    }
-    )
+//     initialeceipt.push("---------------------------")
+//     initialeceipt.push(total)
+
+//     // return initialeceipt
+//     initialeceipt.forEach((element, index) => {
+//         if (index === (initialeceipt.length - 1)) {
+//             console.log(`Total: ${element}`)
+//         } else {
+//             console.log(element)
+//         }
+//     }
+//     )
+// }
+
+// getReceipt(cart)
+
+// calude version (much simpler -learnt alot)
+
+const getReceipt = (cart) => {
+    const cartTotal = total(cart)
+    let printReceipt = cart.forEach((elem) => console.log(`${elem.name} X ${elem.quantity} =  ${elem.quantity * elem.price}`))
+    console.log("--------------------------------")
+    console.log("Total :" + cartTotal)
 }
 
 getReceipt(cart)
