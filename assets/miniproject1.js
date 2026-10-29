@@ -24,9 +24,9 @@
 // // addItem 
 
 // let addItem = (itemName, ItemPrice, itemQuantity) => {
-    //     if (itemQuantity <= 0) {
-        //         return "itemQuantity cannot be  empty or negative"
-        //     }
+//     if (itemQuantity <= 0) {
+//         return "itemQuantity cannot be  empty or negative"
+//     }
 //     else {
 //         // checking  duplicate 
 //         const duplicateIndex = cart.findIndex(elem => elem.name === itemName)
@@ -56,20 +56,51 @@
 // If it isn’t there, print a message like "Pen is not in the cart" 
 //  leave the cart unchanged. Use return to stop, as in addItem.
 
-let cart = [{ name: "Ring", price: 250, quantity: 1 },
-{ name: "Bracelete", price: 950, quantity: 2 },
-{ name: "anklet", price: 500, quantity: 2 }
-]
+// let cart = [{ name: "Ring", price: 250, quantity: 1 },
+// { name: "Bracelete", price: 950, quantity: 2 },
+// { name: "anklet", price: 500, quantity: 2 }
+// ]
 
 
-let removeItem = (itemName) => {
-    removeIndex = cart.findIndex((elem) => elem.name === itemName)
-    if(removeIndex >= 0){
-        cart.splice(removeIndex,1)
-    }else {
-        return `${itemName} is not in the cart`
-    }
+// let removeItem = (itemName) => {
+//     removeIndex = cart.findIndex((elem) => elem.name === itemName)
+//     if(removeIndex >= 0){
+//         cart.splice(removeIndex,1)
+//     }else {
+//         return `${itemName} is not in the cart`
+//     }
+// }
+
+// console.log(removeItem("Ringo"))
+// console.log(cart)
+
+
+// getTotal()
+
+// Job: return the total price of everything in the cart.
+
+// Requirements:
+
+// Each row contributes price × quantity.
+// Return the number (don’t only print it), so other code can use it.
+// An empty cart should give 0.
+
+// Tool: reduce, the same shape as your stock-value one. Keep the 0
+//  starting value, since without it an empty cart would crash.
+
+
+// let cart = [{ name: "Ring", price: 250, quantity: 1 },
+// { name: "Bracelete", price: 950, quantity: 2 },
+// { name: "anklet", price: 500, quantity: 2 }
+// ]
+
+let cart = []
+ 
+let total = (cart) => {
+    return  cart.reduce((sum, elem) =>{ 
+        return sum + (elem.price * elem.quantity) 
+    },0)
 }
 
-console.log(removeItem("Ringo"))
-console.log(cart)
+// console.log(total(cart)) 
+console.log(total(cart)) 
