@@ -94,13 +94,53 @@
 // { name: "anklet", price: 500, quantity: 2 }
 // ]
 
-let cart = []
- 
-let total = (cart) => {
-    return  cart.reduce((sum, elem) =>{ 
-        return sum + (elem.price * elem.quantity) 
-    },0)
+// let cart = []
+
+// let total = (cart) => {
+//     return  cart.reduce((sum, elem) =>{ 
+//         return sum + (elem.price * elem.quantity) 
+//     },0)
+// }
+
+// // console.log(total(cart)) 
+// console.log(total(cart)) 
+
+// The receipt
+
+// “Print a simple receipt: one line per item and a total” means
+//  a function that prints something like a shop bill. With the current cart, the output should look like this:
+
+// Ring x1 = 250
+// Bracelete x2 = 1900
+// anklet x2 = 1000
+// -------------------
+// Total: 3150
+
+
+
+let cart = [{ name: "Ring", price: 250, quantity: 1 },
+{ name: "Bracelete", price: 950, quantity: 2 },
+{ name: "anklet", price: 500, quantity: 2 }
+]
+
+let getReceipt = (cart) => {
+    let initialeceipt = cart.map((elem) => {
+        return `${elem.name} X ${elem.quantity} =  ${elem.quantity * elem.price}`
+    })
+    let total = cart.reduce((sum, elem) => { return sum + elem.quantity * elem.price }, 0)
+
+    initialeceipt.push("---------------------------")
+    initialeceipt.push(total)
+
+    // return initialeceipt
+    initialeceipt.forEach((element, index) => {
+        if (index === (initialeceipt.length - 1)) {
+            console.log(`Total: ${element}`)
+        } else {
+            console.log(element)
+        }
+    }
+    )
 }
 
-// console.log(total(cart)) 
-console.log(total(cart)) 
+getReceipt(cart)
